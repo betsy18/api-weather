@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const app = express();
 // funcion cada vez que se ejecuta la funcion
 const server = app.listen(3003, on);

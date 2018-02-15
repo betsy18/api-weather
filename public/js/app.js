@@ -1,4 +1,5 @@
 window.addEventListener('load', function () {
+  // let skycons = new Skycons ({ "color" : "rosa" });
 
   // declarando variables
   const responseContainer = document.getElementById('response-container');
@@ -46,14 +47,21 @@ function showPosition(position) {
       console.log(dataComplete);
       let summary = dataComplete.summary;
       let icon = dataComplete.icon;
-      let temperature = dataComplete.temperature;
+      let temperatureMax = dataComplete.temperatureMax;
+      let temperatureMin = dataComplete.temperatureMin;
+      let temperatureMaxCelsius = Math.floor((temperatureMax - 32)*5 /9);
+      let temperatureMinCelsius = Math.floor((temperatureMin -32)*5 / 9);
       let humidity = dataComplete.humidity;
-      // let snippet = dataComplete.snippet;
       let li = document.createElement('li');
-      li.innerHTML = '<p>' + 'Tiempo: ' + summary + '</p>' + 'Icon: ' + icon + '</p>' + humidity ;
+      li.innerHTML = '<p>' + 'Tiempo: ' + summary + '</p>'+'<figure><canvas id="icon" width="128" height="128" class="icon"></canvas></figure>' + '</p>' + humidity + 'Temperature:' + temperatureMaxCelsius+'°' + temperatureMinCelsius+'°';
       responseContainer.appendChild(li);
+      
     }
+
   };
+
+  // skycons.add (document.getElementById ( "icon" ), Skycons.RAIN);
+  // skycons.play ();
  
 
 

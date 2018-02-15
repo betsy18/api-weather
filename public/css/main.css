@@ -10,7 +10,15 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+}
+
+.response-container{
   background-color: rgba(50, 50, 54, 0.3);
-  /* color: #ffffff; */
-  /* height: 70vh; */
+  color: #ffffff;
+  height: 70vh;
+}
+
+.icon{
+  color: red;
+  background-color: blue;
 }

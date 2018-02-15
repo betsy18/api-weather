@@ -40,24 +40,33 @@ window.addEventListener('load', function () {
   }
 
   function success(data) {
-    const day = data.currently;
-    let icon = day.icon;
-    let timezone = day.timezone
-    let temperature = Math.floor((day.temperature - 32) * 5 / 9);
-    let summary = day.summary;    
-    let humidity = day.humidity;
-    let uvIndex = day.uvIndex;
-    let div = document.createElement('div');
-    div.className = 'li';
-    div.innerHTML = `
+    const current = new Date();
+    const currentDay = current.getDay();
+    console.log(currentDay);
+    const weekDay = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    for (let day in weekDay){
+      console.log(weekDay[day]);
+    }
+    const days = data.daily.data;
+    for (let index in days) {
+      console.log(days[index]);
+      let dataComplete = days[index];
+      console.log(dataComplete);
+      let summary = dataComplete.summary;
+      let icon = dataComplete.icon;
+      let temperatureMaxCelsius = Math.floor((dataComplete.temperatureMax - 32) * 5 / 9);
+      let temperatureMinCelsius = Math.floor((dataComplete.temperatureMin - 32) * 5 / 9);
+      let humidity = dataComplete.humidity;
+      let li = document.createElement('li');
+      li.className = 'li';
+      li.innerHTML = `
       <figure>
         <canvas id="${icon}" class="icon"></canvas>
-      </figure> 
-      <p>${timezone}</p>
-      <h4>${temperature}°</h4> ${summary}
-      <p>${humidity}</p> 
-      <p>${uvIndex}</p>`;
-    responseContainer.appendChild(div);
+        ${summary}
+      </figure>  
+      </p>Humedad: ${humidity} Max: ${temperatureMaxCelsius}° Min: ${temperatureMinCelsius}°</p>`;
+      responseContainer.appendChild(li);
+    }
   };
 
   function handleError() {

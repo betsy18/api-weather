@@ -11,18 +11,23 @@
   <title>Api del clima</title>
 </head>
 
-<body>
+<body class="text-center">
   <!-- header -->
   <header>
-    <nav></nav>
+    <nav class="navbar justify-content-center">
+      <a class="navbar-brand" href="#">Api weather
+      </a>
+    </nav>
   </header>
 
   <!-- section -->
   <section>
-    <div>
-      <ul id="response-container"></ul>
-      <a type="button" class="btn btn-info">Predicción semanal</a>
+    <div class="container">
+      <div class="row">
+          <div id="response-container" class="response-container text-center"></div>
+      </div>
     </div>
+    <a type="button" class="btn btn-info" href="views/days.html">Predicción semanal</a>
   </section>
 
 
@@ -34,6 +39,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
   <script src="js/app.js"></script>
+  <!-- <script src="js/week.js"></script> -->
 </body>
 
 </html>

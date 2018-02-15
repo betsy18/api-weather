@@ -5,20 +5,41 @@
 }
 
 body{
-  background-image: url('');
-  background-position: center center;
+  background-image: url('https://source.unsplash.com/collection/240395');
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
 
-.response-container{
-  background-color: rgba(50, 50, 54, 0.3);
-  color: #ffffff;
-  height: 70vh;
+header{
+  opacity: 0.5;
+  background-color: #fff;
+  color: #000;
+}
+
+#response-container{
+  width: 40vw;
+  opacity: 0.5;
+  margin-left: auto;
+  margin-right: auto;
+  outline: 1em solid red;
+  background-color: #fff;
+  color: #000;
 }
 
 .icon{
   color: red;
   background-color: blue;
+  width: 2vw;
+  height: 2vh;
+}
+
+.li{
+  text-align: center;
+  text-align: center;
+  line-height: 2.3rem;
+  /* font-size: 1.5rem; */
+  list-style: none;
+  color: black;
 }

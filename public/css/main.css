@@ -4,5 +4,13 @@
   box-sizing: border-box;
 }
 
-
-
+body{
+  background-image: url('');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: rgba(50, 50, 54, 0.3);
+  /* color: #ffffff; */
+  /* height: 70vh; */
+}

@@ -1,4 +1,4 @@
-window.addEventListener('load', function () {
+window.addEventListener('load', function() {
   // llamando a la funcion
   getLocation();
 
@@ -10,25 +10,25 @@ window.addEventListener('load', function () {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-      alert("Tu navegador no soporta la Geolocalización");
+      alert('Tu navegador no soporta la Geolocalización');
     }
   }
 
   function showPosition(position) {
     let lat = position.coords.latitude;
     let lng = position.coords.longitude;
-    let proxy = `https://cors-anywhere.herokuapp.com/`;
+    let proxy = 'https://cors-anywhere.herokuapp.com/';
     let apiLinkDS = `https://api.darksky.net/forecast/4000565e85394e8dc859ece86fbf071f/${lat},${lng}?lang=es`;
 
     fetch(proxy + apiLinkDS)
-      .then(function (response) {
+      .then(function(response) {
         return response.json();
         getJson();
-      }).then(function (data) {
+      }).then(function(data) {
         console.log(data);
         success(data);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         handleError();
       });
   }
@@ -39,32 +39,35 @@ window.addEventListener('load', function () {
     success(data);
   }
 
-  function success(data) {
+  function getDay() {
     const current = new Date();
+    let acumu = 0;
     const currentDay = current.getDay();
-    console.log(currentDay);
-    const weekDay = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    for (let day in weekDay){
-      console.log(weekDay[day]);
-    }
+    const weekDay = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+    return weekDay[currentDay];
+    let test = weekDay[current];
+    test = acumu + acumu;
+    console(test);
+  }
+
+  function success(data) {
     const days = data.daily.data;
     for (let index in days) {
       console.log(days[index]);
       let dataComplete = days[index];
       console.log(dataComplete);
+      let currentDay = getDay();
+      console.log(currentDay);
       let summary = dataComplete.summary;
       let icon = dataComplete.icon;
       let temperatureMaxCelsius = Math.floor((dataComplete.temperatureMax - 32) * 5 / 9);
       let temperatureMinCelsius = Math.floor((dataComplete.temperatureMin - 32) * 5 / 9);
-      let humidity = dataComplete.humidity;
       let li = document.createElement('li');
       li.className = 'li';
-      li.innerHTML = `
-      <figure>
-        <canvas id="${icon}" class="icon"></canvas>
-        ${summary}
-      </figure>  
-      </p>Humedad: ${humidity} Max: ${temperatureMaxCelsius}° Min: ${temperatureMinCelsius}°</p>`;
+      li.innerHTML = `<img class="text-left img-icon" src="../../assets/icon/${icon}.svg">
+      ${currentDay}   
+      Max: ${temperatureMaxCelsius}° 
+      Min: ${temperatureMinCelsius}°</img>`;
       responseContainer.appendChild(li);
     }
   };
@@ -72,5 +75,4 @@ window.addEventListener('load', function () {
   function handleError() {
     console.log('Lo malograste!, aléjate');
   }
-
 });
